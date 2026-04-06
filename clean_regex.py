@@ -132,23 +132,25 @@ def toggle_personal_info():
 # ==========================================
 root = tk.Tk()
 root.title("Regex Text Cleaner - Assessment Version")
-root.geometry("1000x700") 
+# ENLARGED WINDOW to fit the much bigger fonts
+root.geometry("1200x850") 
 
 text_frame = tk.Frame(root)
 text_frame.pack(pady=15)
 
-# Titles above the text boxes
-lbl_in = tk.Label(text_frame, text="Raw Input Text", font=("Arial", 12, "bold"))
+# TITLES: Font size increased to 16
+lbl_in = tk.Label(text_frame, text="Raw Input Text", font=("Arial", 16, "bold"))
 lbl_in.grid(row=0, column=0, pady=(0, 5))
 
-lbl_out = tk.Label(text_frame, text="Cleaned Standardized Output", font=("Arial", 12, "bold"))
+lbl_out = tk.Label(text_frame, text="Cleaned Standardized Output", font=("Arial", 16, "bold"))
 lbl_out.grid(row=0, column=1, pady=(0, 5))
 
-text_in = tk.Text(text_frame, height=20, width=45, font=("Arial", 11), wrap=tk.WORD)
-text_in.grid(row=1, column=0, padx=10)
+# TEXT BOXES: Font size increased to 14
+text_in = tk.Text(text_frame, height=20, width=45, font=("Arial", 14), wrap=tk.WORD)
+text_in.grid(row=1, column=0, padx=15)
 
-text_out = tk.Text(text_frame, height=20, width=45, font=("Arial", 11), bg="#f0f0f0", state=tk.DISABLED, wrap=tk.WORD)
-text_out.grid(row=1, column=1, padx=10)
+text_out = tk.Text(text_frame, height=20, width=45, font=("Arial", 14), bg="#f0f0f0", state=tk.DISABLED, wrap=tk.WORD)
+text_out.grid(row=1, column=1, padx=15)
 
 # Configure Highlighter Colors
 text_in.tag_configure("url_highlight", background="lightblue")
@@ -159,9 +161,9 @@ text_in.tag_configure("phone_highlight", background="magenta", foreground="white
 text_in.tag_configure("handle_highlight", background="cyan") 
 text_in.tag_configure("hashtag_highlight", background="#d8b4e2") 
 
-# Color Legend / Key Frame
-legend_frame = tk.LabelFrame(root, text="Highlight Color Key", font=("Arial", 11, "bold"), padx=10, pady=5)
-legend_frame.pack(pady=5, padx=20)
+# LEGEND: Font size increased to 14 (Header) and 12 (Items)
+legend_frame = tk.LabelFrame(root, text="Highlight Color Key", font=("Arial", 14, "bold"), padx=10, pady=10)
+legend_frame.pack(pady=10, padx=20)
 
 legend_items = [
     ("URLs", "lightblue", "black"),
@@ -176,8 +178,9 @@ legend_items = [
 for i, (text, bg, fg) in enumerate(legend_items):
     row = i // 4  
     col = i % 4
-    lbl = tk.Label(legend_frame, text=text, bg=bg, fg=fg, font=("Arial", 10, "bold"), width=20, relief="solid", bd=1)
-    lbl.grid(row=row, column=col, padx=10, pady=5)
+    # Increased width slightly to 22 so text fits inside the bigger font
+    lbl = tk.Label(legend_frame, text=text, bg=bg, fg=fg, font=("Arial", 12, "bold"), width=22, relief="solid", bd=1)
+    lbl.grid(row=row, column=col, padx=10, pady=8)
 
 # Sample text
 sample_text = (
@@ -196,17 +199,17 @@ sample_text = (
 )
 text_in.insert("1.0", sample_text)
 
-# Buttons Frame
+# BUTTONS: Font size increased to 14, widened to 18
 btn_frame = tk.Frame(root)
 btn_frame.pack(pady=15)
 
-btn_identify = tk.Button(btn_frame, text="Identify Text", command=identify_text, width=16, font=("Arial", 11, "bold"), bg="#d9d9d9")
-btn_identify.grid(row=0, column=0, padx=10)
+btn_identify = tk.Button(btn_frame, text="Identify Text", command=identify_text, width=18, font=("Arial", 14, "bold"), bg="#d9d9d9")
+btn_identify.grid(row=0, column=0, padx=15)
 
-btn_clean = tk.Button(btn_frame, text="Clean All Matches", command=clean_only, state=tk.DISABLED, width=16, font=("Arial", 11, "bold"), bg="#d9d9d9")
-btn_clean.grid(row=0, column=1, padx=10)
+btn_clean = tk.Button(btn_frame, text="Clean All Matches", command=clean_only, state=tk.DISABLED, width=18, font=("Arial", 14, "bold"), bg="#d9d9d9")
+btn_clean.grid(row=0, column=1, padx=15)
 
-btn_redact = tk.Button(btn_frame, text="Hide Personal Info", command=toggle_personal_info, state=tk.DISABLED, width=16, font=("Arial", 11, "bold"), bg="#ffcccb")
-btn_redact.grid(row=0, column=2, padx=10)
+btn_redact = tk.Button(btn_frame, text="Hide Personal Info", command=toggle_personal_info, state=tk.DISABLED, width=18, font=("Arial", 14, "bold"), bg="#ffcccb")
+btn_redact.grid(row=0, column=2, padx=15)
 
 root.mainloop()
